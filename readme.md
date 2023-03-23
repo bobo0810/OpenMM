@@ -2,7 +2,7 @@
 
 
 
-## MMClassification
+## MMClassification图像识别
 
 ![配置文件](assets/配置文件.svg)
 
@@ -40,7 +40,7 @@
 
 
 
-## MMYOLO
+## MMYOLO目标检测
 
 - 定制部分
   - datasets
@@ -57,3 +57,9 @@
   - engine
     - optimizers 提供优化器和优化器封装。
     - hooks 提供 runner 的各种钩子。
+
+
+
+## MMSelfSup自监督
+
+- 比较两个图像的相似度   [示例](assets/cosine.py)
