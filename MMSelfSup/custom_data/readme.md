@@ -27,10 +27,10 @@ train.txt内容如下   无标签图像，仅需图像路径即可。
 ```python
 train_dataloader = dict(
     dataset=dict(
-      	type="ImageList"  										# MMSelfSup内置数据集解析
-        data_root="data/custom_data/" 				# 数据集根路径 
-        ann_file="meta/train.txt", 						# 训练集的图像列表
-        data_prefix=dict(img_path="train/"), 	# 图像路径的前缀
+      	type="ImageList" # MMSelfSup内置数据集解析
+        data_root="data/custom_data/"# 数据集根路径 
+        ann_file="meta/train.txt", 	# 训练集的图像列表
+        data_prefix=dict(img_path="train/"),# 图像路径的前缀
         ...
     ),
 )
