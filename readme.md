@@ -38,28 +38,16 @@
 
 
 
+## MMSelfSup自监督
+
+- 比较两个图像的相似度   [代码](MMSelfSup/cos/cosine.py)
+- 自定义数据集训练  [代码](MMSelfSup/custom_data/readme.md)
+
+
+
 
 
 ## MMYOLO目标检测
 
-- 定制部分
-  - datasets
-    - transforms 包含各种数据增强变换。
-  - models
-    - detectors 定义所有检测模型类。
-    - data_preprocessors 用于预处理模型的输入数据。
-    - backbones 包含各种骨干网络
-    - necks 包含各种模型颈部组件
-    - dense_heads 包含执行密集预测的各种检测头。
-    - losses 包含各种损失函数
-    - task_modules 为检测任务提供模块。例如 assigners、samplers、box coders 和 prior generators。
-    - layers 提供了一些基本的神经网络层
-  - engine
-    - optimizers 提供优化器和优化器封装。
-    - hooks 提供 runner 的各种钩子。
+![MMYOLO定制](assets/MMYOLO定制.svg)
 
-
-
-## MMSelfSup自监督
-
-- 比较两个图像的相似度   [示例](assets/cosine.py)
