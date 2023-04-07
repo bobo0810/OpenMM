@@ -1,6 +1,7 @@
 # OpenMM最佳食用手册
 
-
+- 该仓库收录于[PytorchNetHub](https://github.com/bobo0810/PytorchNetHub)
+- [荣誉证书 ](荣誉证书)
 
 ## MMClassification图像识别
 
