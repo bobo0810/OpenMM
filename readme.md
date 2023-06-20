@@ -3,6 +3,23 @@
 - 该仓库收录于[PytorchNetHub](https://github.com/bobo0810/PytorchNetHub)
 - [荣誉证书 ](荣誉证书)
 
+
+
+
+## MMPretrain
+- `识别模型`加载`自监督权重`   [教程](MMPretrain/load_weight.md) 
+
+![MMPretrain-导出](assets/MMPretrain-导出.jpg)
+
+## MMYOLO目标检测
+
+![MMYOLO定制](assets/MMYOLO定制.svg)
+
+------
+
+
+<details>
+<summary>以下内容已过时</summary>
 ## MMClassification图像识别
 
 ![配置文件](assets/配置文件.svg)
@@ -43,12 +60,13 @@
 
 - 比较两个图像的相似度   [代码](MMSelfSup/cos/cosine.py)
 - 自定义数据集训练  [代码](MMSelfSup/custom_data/readme.md)
+</details>
 
 
 
 
 
-## MMYOLO目标检测
 
-![MMYOLO定制](assets/MMYOLO定制.svg)
+
+
 
