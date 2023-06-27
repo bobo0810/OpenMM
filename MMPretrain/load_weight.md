@@ -1,8 +1,18 @@
-# 识别模型 加载 自监督预训练权重
+# 下游识别模型 加载 自监督预训练权重
 
-以MAE为例
 
-1. `config/mae`的配置文件用于训练自监督算法，得到自监督权重。
+
+- 问题：自监督模型 和 下游识别模型 结构不同，如何迁移权重？
+
+- 方案：对于下游任务，backbone加载自监督权重，输出头 随机初始化。
+
+
+
+
+
+# 示例
+
+1. 以MAE为例，`config/mae`的配置文件用于训练自监督算法，得到自监督权重。
 
    ![image-20230620上午104408324](assets/image-20230620上午104408324.png)
 
@@ -10,23 +20,59 @@
 
    每个自监督算法均有对应的`benchmarks`文件夹。
 
-3. 加载
+3. 加载模型
 
-```python
-from mmpretrain import get_model
-import torch
-model = get_model("configs/mae/benchmarks/vit-base-p16_8xb128-coslr-100e_in1k.py", # 识别模型
-                  pretrained="/xxx/mae_vit-base-p16_8xb512-fp16-coslr-1600e_in1k_20220825-f7569ca2.pth", # 自监督权重
-                  head=dict(num_classes=2) # 修改模型输出类别数。（可选）
-        )
-x = torch.ones((1, 3, 224, 224))
-y=model(x)
-print(y)
-```
+   方案一： 基于配置文件
 
-- pretrained
-  - True/False：加载官方预训练权重
-  - 模型路径：加载指定权重
+   ```python
+   from mmpretrain import get_model
+   import torch
+   model = get_model("configs/mae/benchmarks/vit-base-p16_8xb128-coslr-100e_in1k.py", # 识别模型
+                     pretrained="/xxx/mae_vit-base-p16_8xb512-fp16-coslr-1600e_in1k_20220825-f7569ca2.pth", # 自监督权重
+                     head=dict(num_classes=2) # 修改模型输出类别数。（可选）
+           )
+   x = torch.ones((1, 3, 224, 224))
+   y=model(x)
+   print(y)
+   ```
+
+   方案二：基于模型名称
+
+   （1）定位识别模型名称
+
+   ```python
+   import mmpretrain
+   print(mmpretrain.list_models())
+   
+   # 自监督模型
+   'mae_vit-base-p16_8xb512-amp-coslr-300e_in1k',
+   'mae_vit-base-p16_8xb512-amp-coslr-400e_in1k',
+   
+   # 识别模型
+   'vit-base-p16_mae-300e-pre_8xb128-coslr-100e_in1k', # 整体微调
+   'vit-base-p16_mae-300e-pre_8xb2048-linear-coslr-90e_in1k', #linear线性评估，固定主干，仅微调分类头
+   
+   # 识别模型名 为"vit-base-p16_mae-300e-pre_8xb128-coslr-100e_in1k"
+   ```
+
+   （2）加载识别模型
+
+   ```python
+   from mmpretrain import get_model
+   import torch
+   model = get_model("vit-base-p16_mae-300e-pre_8xb128-coslr-100e_in1k", # 识别模型
+                     pretrained="/xxx/mae_vit-base-p16_8xb512-fp16-coslr-1600e_in1k_20220825-f7569ca2.pth", # 自监督权重
+                     head=dict(num_classes=2) # 修改模型输出类别数。（可选）
+           )
+   x = torch.ones((1, 3, 224, 224))
+   y=model(x)
+   print(y)
+   ```
+
+> 注：pretrained
+>
+> - True/False：加载官方预训练权重
+> - 模型路径：加载指定权重
 
 ​		输出
 

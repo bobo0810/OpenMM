@@ -7,8 +7,8 @@
 
 
 ## MMPretrain
-- `识别模型`加载`自监督预训练权重`   [教程](MMPretrain/load_weight.md) 
-- 训练时加载`预训练权重`   [教程](MMPretrain/load_pre.md) 
+- `下游识别模型`加载`自监督预训练权重`   [教程](MMPretrain/load_weight.md) 
+- MM库训练时加载`预训练权重`   [教程](MMPretrain/load_pre.md) 
 
 ![MMPretrain-导出](assets/MMPretrain-导出.jpg)
 
