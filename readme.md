@@ -7,7 +7,14 @@
 ## MMEngine
 - Hook用法 [教程1](https://mmengine.readthedocs.io/zh_CN/latest/tutorials/hook.html#id2)  [教程2](https://mmengine.readthedocs.io/zh_CN/latest/design/hook.html)
 
-## MMPretrain预训练
+
+
+## MMCV
+
+- 验证图像完整性  [教程](MMCV/img_full.md) 
+
+## MMPretrain
+
 - `下游识别模型`加载`自监督预训练权重`   [教程](MMPretrain/load_weight.md) 
 - MM库训练时加载`预训练权重`   [教程](MMPretrain/load_pre.md) 
 
