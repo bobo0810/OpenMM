@@ -6,6 +6,7 @@
 
 ## MMEngine
 - Hook用法 [教程1](https://mmengine.readthedocs.io/zh_CN/latest/tutorials/hook.html#id2)  [教程2](https://mmengine.readthedocs.io/zh_CN/latest/design/hook.html)
+- [为模型不同模块分别指定学习率](https://github.com/open-mmlab/mmengine/blob/main/docs/zh_cn/tutorials/optim_wrapper.md#%E4%B8%BA%E6%A8%A1%E5%9E%8B%E4%B8%8D%E5%90%8C%E9%83%A8%E5%88%86%E7%9A%84%E5%8F%82%E6%95%B0%E8%AE%BE%E7%BD%AE%E4%B8%8D%E5%90%8C%E7%9A%84%E8%B6%85%E5%8F%82%E7%B3%BB%E6%95%B0)
 
 
 
