@@ -17,7 +17,35 @@
 ## MMPretrain
 
 - `下游识别模型`加载`自监督预训练权重`   [教程](MMPretrain/load_weight.md) 
-- MM库训练时加载`预训练权重`   [教程](MMPretrain/load_pre.md) 
+- 训练时加载`预训练权重`   [教程](MMPretrain/load_pre.md) 
+- 自监督模型&识别模型 如何导出ONNX
+  ```python
+  from mmpretrain import get_model
+
+  model_name="mocov3_vit-base-p16_16xb256-amp-coslr-300e_in1k"
+  pretrained="./mocov3_vit-base-p16_16xb256-amp-coslr-300e_in1k-224_20220826-25213343.pth"
+
+  model = get_model(model_name, pretrained=pretrained)
+  
+  torch_model=model.backbone  # 自监督模型，与model.extract_feat等价,仅包含backbone
+  torch_model=model  # 识别模型，包含backbone、neck、head
+  
+  torch_model.eval()
+  onnx_path="./model.onnx" # 文件夹
+
+  imgs = torch.ones(tuple([1,3,224,224]))
+  with torch.no_grad():
+      torch.onnx.export(
+              torch_model,
+              imgs,
+              onnx_path,
+              verbose=False,
+              opset_version=17,
+              input_names=["input"],
+              output_names=["output"],
+              dynamic_axes={"input": {0: "batch"}, "output": {0: "batch"}}, # Batch维度动态
+          )
+  ```
 
 ![MMPretrain-导出](assets/MMPretrain-导出.jpg)
 
