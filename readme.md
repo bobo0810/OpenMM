@@ -1,4 +1,12 @@
-# OpenMM最佳食用手册
+# OpenMM最佳食用手册 && 碎碎念
+
+# 一 碎碎念
+
+## Transformers用法
+
+- [Siglip导出ONNX](Other/siglip2onnx.py)
+
+# 二 OpenMM用法
 
 - 该仓库收录于[PytorchNetHub](https://github.com/bobo0810/PytorchNetHub)
 - [荣誉证书 ](荣誉证书)
