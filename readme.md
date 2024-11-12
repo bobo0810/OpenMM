@@ -1,12 +1,8 @@
-# OpenMM最佳食用手册 && 碎碎念
+# OpenMM最佳食用手册 && 其他
 
-# 一 碎碎念
 
-## Transformers用法
 
-- [Siglip导出ONNX](Other/siglip2onnx.py)
-
-# 二 OpenMM用法
+# OpenMM用法
 
 - 该仓库收录于[PytorchNetHub](https://github.com/bobo0810/PytorchNetHub)
 - [荣誉证书 ](荣誉证书)
@@ -54,6 +50,14 @@
               dynamic_axes={"input": {0: "batch"}, "output": {0: "batch"}}, # Batch维度动态
           )
   ```
+  - 无需修改Config文件，使用命令行传参
+  ```bash
+  bash ./tools/dist_train.sh ${CONFIG_FILE} ${GPU_NUM} ${NNODES}  \
+  --cfg-options resume=${RESUME} \
+  --cfg-options train_dataloader.batch_size=${BATCH} \
+  --cfg-options train_dataloader.dataset.ann_file=${TRAIN_TXT} \
+  ...
+  ```
 
 ![MMPretrain-导出](assets/MMPretrain-导出.jpg)
 
@@ -63,6 +67,11 @@
 
 ------
 
+# 二 其他
+
+## Transformers用法
+
+- [Siglip导出ONNX](Other/siglip2onnx.py)
 
 <details>
 <summary>以下内容已过时</summary>
